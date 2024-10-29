@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>실시간 강의 번역 자막</title>
+    <style>
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        #subtitle {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f0f0f0;
+            font-size: 1.2em;
+            color: #333;
+            min-height: 50px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>실시간 강의 번역 자막 서비스</h1>
+    <form id="language-form">
+        <label for="inputLang">말할 언어:</label>
+        <select id="inputLang" name="inputLang">
+            <option value="en">English</option>
+            <option value="ko">Korean</option>
+            <option value="es">Spanish</option>
+            <option value="fr">French</option>
+            <option value="de">German</option>
+        </select>
+        <label for="outputLang">번역할 언어:</label>
+        <select id="outputLang" name="outputLang">
+            <option value="en">English</option>
+            <option value="ko">Korean</option>
+            <option value="es">Spanish</option>
+            <option value="fr">French</option>
+            <option value="de">German</option>
+        </select>
+        <button type="button" onclick="startRecognition()">음성 인식 시작</button>
+        <button type="button" onclick="stopRecognition()">멈춤</button>
+    </form>
+    <div id="subtitle">여기에 번역된 자막이 표시됩니다...</div>
+</div>
+
+<script>
+    let mediaRecorder;
+    let audioChunks = [];
+    let isRecording = false;
+
+    async function startRecognition() {
+        if (isRecording) return;
+        isRecording = true;
+
+        const inputLang = document.getElementById("inputLang").value;
+        const outputLang = document.getElementById("outputLang").value;
+
+        const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+        mediaRecorder = new MediaRecorder(stream);
+
+        mediaRecorder.ondataavailable = (event) => {
+            audioChunks.push(event.data);
+        };
+
+        mediaRecorder.onstop = async () => {
+            const audioBlob = new Blob(audioChunks, { type: 'audio/wav' });
+            audioChunks = [];
+            await sendAudioToServer(audioBlob, inputLang, outputLang);
+            if (isRecording) mediaRecorder.start(); // 실시간 인식을 위해 반복 시작
+        };
+
+        mediaRecorder.start();
+    }
+
+    function stopRecognition() {
+        isRecording = false;
+        if (mediaRecorder && mediaRecorder.state !== "inactive") {
+            mediaRecorder.stop();
+        }
+    }
+
+    async function sendAudioToServer(audioBlob, inputLang, outputLang) {
+        const formData = new FormData();
+        formData.append("audio", audioBlob);
+        formData.append("inputLang", inputLang);
+        formData.append("outputLang", outputLang);
+
+        const response = await fetch("/translate", {
+            method: "POST",
+            body: formData
+        });
+
+        if (response.ok) {
+            const data = await response.json();
+            document.getElementById("subtitle").innerText = data.translatedText;
+        } else {
+            console.error("번역 실패");
+        }
+    }
+</script>
+</body>
+</html>
