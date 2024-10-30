@@ -9,5 +9,4 @@ public class AiboardApplication {
     public static void main(String[] args) {
         SpringApplication.run(AiboardApplication.class, args);
     }
-
 }

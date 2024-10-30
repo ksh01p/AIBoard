@@ -1,5 +1,4 @@
 package com.example.aiboard.service;
-
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.ByteArrayResource;
@@ -20,7 +19,7 @@ import java.util.Map;
 @Service
 public class TranslateService {
 
-    @Value("sk-RKZ9yN_z2BeDa9DiDJBuLbiwNnHS8nD8y0mQgx26MfT3BlbkFJVJ1Q6Jbq4TgU4TED-D_dpNRALJ2G6cUgyTT8nFZkcA")
+    @Value("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")
     private String openAiApiKey;
 
     private static final String WHISPER_API_URL = "https://api.openai.com/v1/audio/transcriptions";
@@ -87,3 +86,4 @@ public class TranslateService {
         return root.path("choices").get(0).path("message").path("content").asText();
     }
 }
+

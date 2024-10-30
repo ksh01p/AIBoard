@@ -1,5 +1,8 @@
-package com.example.aiboard.dto;
+package com.example.aiboard.domain;
 
+import lombok.Getter;
+
+@Getter
 public class TranslationResponse {
     private String translatedText;
 
@@ -7,7 +10,4 @@ public class TranslationResponse {
         this.translatedText = translatedText;
     }
 
-    public String getTranslatedText() {
-        return translatedText;
-    }
 }
