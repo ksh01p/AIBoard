@@ -19,7 +19,7 @@ import java.util.Map;
 @Service
 public class TranslateService {
 
-    @Value("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")
+    @Value("")
     private String openAiApiKey;
 
     private static final String WHISPER_API_URL = "https://api.openai.com/v1/audio/transcriptions";
