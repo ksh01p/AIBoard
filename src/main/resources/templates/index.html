@@ -88,7 +88,7 @@
         formData.append("inputLang", inputLang);
         formData.append("outputLang", outputLang);
 
-        const response = await fetch("/translate", {
+        const response = await fetch("/transcribe", {
             method: "POST",
             body: formData
         });

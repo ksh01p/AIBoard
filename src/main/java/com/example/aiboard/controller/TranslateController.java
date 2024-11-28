@@ -13,12 +13,9 @@ public class TranslateController {
     @Autowired
     private TranslateService translateService;
 
-    @PostMapping(value = "/translate", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public TranslationResponse translateAudio(@RequestParam("audio") MultipartFile audio,
-                                              @RequestParam("inputLang") String inputLang,
-                                              @RequestParam("outputLang") String outputLang) {
-        String translatedText = translateService.translateAudio(audio, inputLang, outputLang);
-        return new TranslationResponse(translatedText);
+    @PostMapping(value = "/transcribe", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public TranslationResponse transcribeAudio(@RequestParam("audio") MultipartFile audio) {
+        String recognizedText = translateService.recognizeSpeech(audio);
+        return new TranslationResponse(recognizedText);
     }
 }
-
