@@ -2,7 +2,8 @@
 
 AIBoard는 음성을 텍스트로 변환한 뒤, 이를 원하는 언어로 실시간 번역하여 자막으로 제공하는 서비스를 구현한 프로젝트입니다. Whisper API와 ChatGPT API를 활용하여 정밀한 텍스트 변환 및 언어 번역 기능을 제공합니다.
 
----
+![1](https://github.com/user-attachments/assets/fe2aadbd-f54c-4aa4-abad-3d3787c679ec)
+
 
 ## 🚀 주요 기능 (Features)
 
