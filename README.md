@@ -63,5 +63,7 @@ AIBoard는 음성을 텍스트로 변환한 뒤, 이를 원하는 언어로 실�
 
 <img width="1440" alt="1" src="https://github.com/user-attachments/assets/afdc3e6e-8a70-4148-b8ae-07bdfc3a4b02">
 
+[Watch the video](https://youtu.be/3OSxXfjrh8c)
+
 
    
