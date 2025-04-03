@@ -66,7 +66,7 @@ AIBoard는 음성을 텍스트로 변환한 뒤, 이를 원하는 언어로 실�
 [Watch the video](https://youtu.be/3OSxXfjrh8c)
 
 ---
-FE + BE 개발 - 김민경
-기획 - 김수형
+## FE + BE 개발 - 김민경(https://github.com/kmk01p)
+## 기획 - 김수형(https://github.com/ksh01p)
 
    
