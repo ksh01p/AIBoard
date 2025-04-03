@@ -61,6 +61,7 @@ AIBoard는 음성을 텍스트로 변환한 뒤, 이를 원하는 언어로 실�
 5. **맞춤형 자막 스타일을 설정하여 자막 크기와 색상을 조정할 수 있습니다.**
 6. **번역된 텍스트가 자막 형태로 화면에 표시됩니다.**
 
+
 <img width="1440" alt="1" src="https://github.com/user-attachments/assets/afdc3e6e-8a70-4148-b8ae-07bdfc3a4b02">
 
 [Watch the video](https://youtu.be/3OSxXfjrh8c)
